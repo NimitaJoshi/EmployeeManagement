@@ -1,0 +1,56 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<User>
+@{
+    ViewData["Title"] = "User Home Page";
+}
+
+<a asp-action="create">Create a new user</a>
+<table border="1" class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Email</th>
+            <th scope="col">Password</th>
+            <th scope="col"></th>
+    </tr>
+    </thead>
+   <tbody>
+        @foreach(User users in Model)
+        {
+            <tr>
+                <td>@users.Name</td>
+                <td>@users.Age</td>
+                <td>@users.Email</td>
+                <td>@users.Password</td>
+                <td>
+                    @Html.ActionLink("Edit", "Update", new { id = users.Id }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Delete", "Delete", new { id = users.Id }, new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h6>(Load data using Json)</h6>
+<table id="AjaxUsersTable" border="1" class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Email</th>
+            <th scope="col">Password</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+
+<script src="~/lib/jquery/jquery.js"></script>
+<script src="~/js/LoadUsersUsingAjax.js"></script>
+
+
